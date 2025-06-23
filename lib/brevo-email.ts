@@ -219,7 +219,7 @@ class BrevoEmailService {
             <p><strong>Date:</strong> ${date}</p>
             <p><strong>Time:</strong> ${time}</p>
             <p><strong>Duration:</strong> 45 minutes</p>
-            <p><strong>Type:</strong> Video call (link will be provided)</p>
+            <p><strong>Type:</strong> Video call (a will be provided)</p>
           </div>
           
           <p>To make the most of our time together, please:</p>

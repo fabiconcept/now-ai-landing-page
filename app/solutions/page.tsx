@@ -2,9 +2,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Bot, Phone, Globe, MessageSquare, Shield, CheckCircle, ArrowRight, Play, Calendar } from "lucide-react"
+import { Bot, Phone, Globe, MessageSquare, Shield, CheckCircle, Calendar } from "lucide-react"
 import Link from "next/link"
 import { AnimatedSection } from "@/components/ui/animated-section"
+import { solutionsMetadata } from "@/constants/metadata"
+
+export const metadata = solutionsMetadata
 
 export default function SolutionsPage() {
   return (
@@ -17,28 +20,31 @@ export default function SolutionsPage() {
               <span className="text-6xl drop-shadow-lg font-black text-orange-500 tracking-tight logo">N:OW</span>
             </Link>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/solutions" className="text-green-600 hover:text-green-700 transition-colors font-bold">
+              <Link href="/solutions" className="text-green-600 hover:text-green-700 transition-colors font-bold">
                 Solutions
-              </a>
-              <a href="/pricing" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+              </Link>
+              <Link href="/pricing" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
                 Pricing
-              </a>
-              <a href="/resources" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+              </Link>
+              <Link href="/resources" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
                 Resources
-              </a>
-              <a href="/newsletter" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+              </Link>
+              <Link href="/newsletter" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
                 Newsletter
-              </a>
+              </Link>
+              <Link href="/contact" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+                Contact
+              </Link>
             </nav>
             <div className="flex items-center space-x-3">
               <Button
                 variant="outline"
                 className="hidden sm:inline-flex border-green-200 text-gray-700 hover:bg-green-50 hover:text-green-700 font-semibold"
               >
-                <a href="/book-call">Book a Call</a>
+                <Link href="/book-call">Book a Call</Link>
               </Button>
               <Button className="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-full px-6">
-                <a href="/demo">Get a Demo</a>
+                <Link href="/demo">Get a Demo</Link>
               </Button>
             </div>
           </div>
@@ -65,14 +71,14 @@ export default function SolutionsPage() {
                 variant="outline"
                 className="hidden sm:inline-flex border-green-200 text-gray-700 hover:bg-green-50 hover:text-green-700 font-semibold"
               >
-                <a href="/book-call">Book a Call</a>
+                <Link href="/book-call">Book a Call</Link>
               </Button>
               <Button 
                 size="lg"
                 variant="outline"
                 className="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-full px-6"
               >
-                <a href="/demo">Get a Demo</a>
+                <Link href="/demo">Get a Demo</Link>
               </Button>
             </div>
           </div>
@@ -303,7 +309,7 @@ export default function SolutionsPage() {
       <section className="py-20 bg-green-50/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Why Choose NOW AI?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Why Choose <span className="logo text-orange-500">N:OW</span> AI?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Compare our comprehensive solution with traditional approaches
             </p>
@@ -340,7 +346,7 @@ export default function SolutionsPage() {
                     </div>
                   </div>
                   <div className="p-6 bg-green-50">
-                    <h3 className="font-semibold text-green-900 mb-4">NOW AI</h3>
+                    <h3 className="font-semibold text-green-900 mb-4"><span className="logo text-orange-500">N:OW</span> AI</h3>
                     <div className="space-y-4">
                       {["✅", "✅", "✅", "✅", "✅", "✅"].map((status, index) => (
                         <div key={index} className="py-2 text-center">
@@ -421,19 +427,19 @@ export default function SolutionsPage() {
                 <h3 className="font-semibold mb-4">Solutions</h3>
                 <ul className="space-y-2 text-gray-400">
                   <li>
-                    <a href="/solutions#ai-chatbot" className="hover:text-green-400 transition-colors">
+                    <Link href="/solutions#ai-chatbot" className="hover:text-green-400 transition-colors">
                       AI Chatbots
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/solutions#voice-agent" className="hover:text-green-400 transition-colors">
+                    <Link href="/solutions#voice-agent" className="hover:text-green-400 transition-colors">
                       Voice Agents
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/solutions#automation" className="hover:text-green-400 transition-colors">
+                    <Link href="/solutions#automation" className="hover:text-green-400 transition-colors">
                       Website Automation
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -441,19 +447,19 @@ export default function SolutionsPage() {
                 <h3 className="font-semibold mb-4">Company</h3>
                 <ul className="space-y-2 text-gray-400">
                   {/* <li>
-                          <a href="/about" className="hover:text-green-400 transition-colors">
+                          <Link href="/about" className="hover:text-green-400 transition-colors">
                             About
-                          </a>
+                          </Link>
                         </li> */}
                   <li>
-                    <a href="/resources" className="hover:text-green-400 transition-colors">
+                    <Link href="/resources" className="hover:text-green-400 transition-colors">
                       Resources
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/newsletter" className="hover:text-green-400 transition-colors">
+                    <Link href="/newsletter" className="hover:text-green-400 transition-colors">
                       Newsletter
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -467,14 +473,14 @@ export default function SolutionsPage() {
               </div>
             </div>
             <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
-              <p className="text-gray-400">© 2024 NOW AI. All rights reserved.</p>
+              <p className="text-gray-400">© {new Date().getFullYear()} <span className="logo text-orange-500">N:OW</span> AI. All rights reserved.</p>
               {/* <div className="flex space-x-6 mt-4 md:mt-0">
-                      <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                      <Link href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                         Privacy Policy
-                      </a>
-                      <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                      </Link>
+                      <Link href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                         Terms of Service
-                      </a>
+                      </Link>
                     </div> */}
             </div>
           </div>

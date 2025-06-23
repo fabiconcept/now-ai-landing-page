@@ -184,3 +184,30 @@
     animation-delay: 1.4s;
   }
 }
+
+/* Link hover effect */
+a {
+  cursor: pointer;
+}
+
+
+body:has(a:hover) a:hover{
+  opacity: 1;
+}
+
+body:has(a:hover) a:not(:hover).no-underline {
+  opacity: 1;
+}
+
+body:has(a:hover) a:not(:hover) {
+  opacity: 0.6;
+}
+
+body:has(a:hover) button:has(>a:not(:hover)) {
+  opacity: 0.6;
+}
+
+/* Global transition */
+* {
+  transition: all 0.15s ease-in-out;
+}

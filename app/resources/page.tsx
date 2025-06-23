@@ -3,7 +3,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import {
-  Bot,
   FileText,
   Video,
   BookOpen,
@@ -22,6 +21,9 @@ import {
 import InteractiveResourcesPage from "./interactive-page"
 import Link from "next/link"
 import { AnimatedSection } from "@/components/ui/animated-section"
+import { resourcesMetadata } from "@/constants/metadata"
+
+export const metadata = resourcesMetadata
 
 export default function ResourcesPage() {
   const resourceCategories = [
@@ -76,63 +78,6 @@ export default function ResourcesPage() {
     },
   ]
 
-  const resources = [
-    {
-      title: "How Family Practice Increased Patient Satisfaction by 40%",
-      description: "Learn how Dr. Smith's practice transformed patient communication with AI chatbots.",
-      type: "Case Study",
-      readTime: "8 min read",
-      category: "Patient Experience",
-      icon: Stethoscope,
-      popular: true,
-    },
-    {
-      title: "Reducing No-Shows: A Dental Practice Success Story",
-      description: "Discover how automated reminders reduced no-shows by 65% at Bright Smile Dental.",
-      type: "Case Study",
-      readTime: "6 min read",
-      category: "Practice Management",
-      icon: Calendar,
-      popular: false,
-    },
-    {
-      title: "AI Voice Agents: Implementation Best Practices",
-      description: "Step-by-step guide to successfully deploying voice AI in your healthcare practice.",
-      type: "Guide",
-      readTime: "12 min read",
-      category: "Implementation",
-      icon: Lightbulb,
-      popular: true,
-    },
-    {
-      title: "The Future of Healthcare: AI Trends for 2024",
-      description: "Industry insights and predictions for AI adoption in healthcare over the next year.",
-      type: "White Paper",
-      readTime: "15 min read",
-      category: "Industry Trends",
-      icon: TrendingUp,
-      popular: false,
-    },
-    {
-      title: "Getting Started with Healthcare Chatbots",
-      description: "Complete video tutorial series on implementing and optimizing AI chatbots.",
-      type: "Video Series",
-      readTime: "45 min watch",
-      category: "Tutorial",
-      icon: Video,
-      popular: true,
-    },
-    {
-      title: "Measuring AI Success: Key Metrics and KPIs",
-      description: "Essential metrics to track the success of your AI implementation.",
-      type: "Guide",
-      readTime: "10 min read",
-      category: "Analytics",
-      icon: BarChart3,
-      popular: false,
-    },
-  ]
-
   const webinars = [
     {
       title: "AI in Healthcare: What's Working Now",
@@ -162,28 +107,31 @@ export default function ResourcesPage() {
               <span className="text-6xl drop-shadow-lg font-black text-orange-500 tracking-tight logo">N:OW</span>
             </Link>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/solutions" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+              <Link href="/solutions" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
                 Solutions
-              </a>
-              <a href="/pricing" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+              </Link>
+              <Link href="/pricing" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
                 Pricing
-              </a>
-              <a href="/resources" className="text-green-600 hover:text-green-700 transition-colors font-bold">
+              </Link>
+              <Link href="/resources" className="text-green-600 hover:text-green-700 transition-colors font-bold">
                 Resources
-              </a>
-              <a href="/newsletter" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+              </Link>
+              <Link href="/newsletter" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
                 Newsletter
-              </a>
+              </Link>
+              <Link href="/contact" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+                Contact
+              </Link>
             </nav>
             <div className="flex items-center space-x-3">
               <Button
                 variant="outline"
                 className="hidden sm:inline-flex border-green-200 text-gray-700 hover:bg-green-50 hover:text-green-700 font-semibold"
               >
-                <a href="/book-call">Book a Call</a>
+                <Link href="/book-call">Book a Call</Link>
               </Button>
               <Button className="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-full px-6">
-                <a href="/demo">Get a Demo</a>
+                <Link href="/demo">Get a Demo</Link>
               </Button>
             </div>
           </div>
@@ -395,19 +343,19 @@ export default function ResourcesPage() {
                 <h3 className="font-semibold mb-4">Solutions</h3>
                 <ul className="space-y-2 text-gray-400">
                   <li>
-                    <a href="/solutions#ai-chatbot" className="hover:text-green-400 transition-colors">
+                    <Link href="/solutions#ai-chatbot" className="hover:text-green-400 transition-colors">
                       AI Chatbots
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/solutions#voice-agent" className="hover:text-green-400 transition-colors">
+                    <Link href="/solutions#voice-agent" className="hover:text-green-400 transition-colors">
                       Voice Agents
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/solutions#automation" className="hover:text-green-400 transition-colors">
+                    <Link href="/solutions#automation" className="hover:text-green-400 transition-colors">
                       Website Automation
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -415,19 +363,19 @@ export default function ResourcesPage() {
                 <h3 className="font-semibold mb-4">Company</h3>
                 <ul className="space-y-2 text-gray-400">
                   {/* <li>
-                    <a href="/about" className="hover:text-green-400 transition-colors">
+                    <Link href="/about" className="hover:text-green-400 transition-colors">
                       About
-                    </a>
+                    </Link>
                   </li> */}
                   <li>
-                    <a href="/resources" className="hover:text-green-400 transition-colors">
+                    <Link href="/resources" className="hover:text-green-400 transition-colors">
                       Resources
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/newsletter" className="hover:text-green-400 transition-colors">
+                    <Link href="/newsletter" className="hover:text-green-400 transition-colors">
                       Newsletter
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -441,14 +389,14 @@ export default function ResourcesPage() {
               </div>
             </div>
             <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
-              <p className="text-gray-400">© 2024 NOW AI. All rights reserved.</p>
+              <p className="text-gray-400">© {new Date().getFullYear()} <span className="logo text-orange-500">N:OW</span> AI. All rights reserved.</p>
               {/* <div className="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                   Privacy Policy
-                </a>
-                <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                   Terms of Service
-                </a>
+                </Link>
               </div> */}
             </div>
           </div>

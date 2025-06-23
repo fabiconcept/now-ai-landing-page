@@ -29,7 +29,9 @@ interface CreateEventParams {
   description?: string
   startDateTime: string
   endDateTime: string
-  attendeeEmail: string
+  // Making these optional since we're not using them in the event creation
+  // to avoid requiring domain-wide delegation
+  attendeeEmail?: string
   attendeeName?: string
   timeZone?: string
 }
@@ -40,20 +42,24 @@ class GoogleCalendarService {
 
   constructor() {
     if (
-      !process.env.GOOGLE_CALENDAR_API_KEY ||
       !process.env.GOOGLE_CALENDAR_CLIENT_EMAIL ||
-      !process.env.GOOGLE_CALENDAR_PRIVATE_KEY
+      !process.env.GOOGLE_CALENDAR_PRIVATE_KEY ||
+      !process.env.GOOGLE_CALENDAR_USER_EMAIL
     ) {
-      throw new Error("Google Calendar credentials not configured")
+      throw new Error("Google Calendar credentials not configured. Make sure GOOGLE_CALENDAR_CLIENT_EMAIL, GOOGLE_CALENDAR_PRIVATE_KEY, and GOOGLE_CALENDAR_USER_EMAIL are set.")
     }
 
-    // Initialize Google Auth with service account
+    // Initialize Google Auth with service account and domain-wide delegation
     this.auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.GOOGLE_CALENDAR_CLIENT_EMAIL,
-        private_key: process.env.GOOGLE_CALENDAR_PRIVATE_KEY.replace(/\\n/g, "\n"),
+        private_key: process.env.GOOGLE_CALENDAR_PRIVATE_KEY.replace(/\\\\n/g, "\n"),
       },
       scopes: ["https://www.googleapis.com/auth/calendar"],
+      // This enables domain-wide delegation
+      clientOptions: {
+        subject: process.env.GOOGLE_CALENDAR_USER_EMAIL
+      }
     })
 
     this.calendar = google.calendar({ version: "v3", auth: this.auth })
@@ -61,6 +67,27 @@ class GoogleCalendarService {
 
   async createEvent(params: CreateEventParams): Promise<any> {
     try {
+      
+      // Use the primary calendar of the delegated user
+      const calendarId = 'primary';
+      
+      // First, verify the calendar exists and is accessible
+      try {
+        await this.calendar.calendars.get({
+          calendarId: calendarId
+        });
+      } catch (calendarError: any) {
+        console.error('Error accessing calendar:', {
+          message: calendarError.message,
+          code: calendarError.code,
+          status: calendarError.status,
+          response: calendarError.response?.data
+        });
+        throw new Error(`Cannot access calendar. Please ensure the service account has the correct permissions.`);
+      }
+      
+      // For service accounts, we can't invite attendees without domain-wide delegation
+      // So we'll include the attendee info in the description instead
       const event: CalendarEvent = {
         summary: params.title,
         description: params.description,
@@ -72,31 +99,46 @@ class GoogleCalendarService {
           dateTime: params.endDateTime,
           timeZone: params.timeZone || "America/New_York",
         },
-        attendees: [
-          {
-            email: params.attendeeEmail,
-            displayName: params.attendeeName,
-          },
-        ],
+        // Remove attendees array since we can't invite without domain-wide delegation
+        // The attendee info is already in the description
         reminders: {
           useDefault: false,
           overrides: [
-            { method: "email", minutes: 24 * 60 }, // 24 hours before
             { method: "popup", minutes: 30 }, // 30 minutes before
           ],
         },
-      }
-
+      };
+      
+      // Create the event
       const response = await this.calendar.events.insert({
-        calendarId: process.env.GOOGLE_CALENDAR_ID || "primary",
+        calendarId: calendarId,
         resource: event,
         sendUpdates: "all",
-      })
-
-      return response.data
-    } catch (error) {
-      console.error("Error creating calendar event:", error)
-      throw new Error("Failed to create calendar event")
+      });
+      
+      return response.data;
+      
+    } catch (error: any) {
+      console.error('Detailed error creating calendar event:', {
+        message: error.message,
+        code: error.code,
+        status: error.status,
+        response: error.response?.data,
+        config: {
+          method: error.config?.method,
+          url: error.config?.url,
+          data: error.config?.data
+        }
+      });
+      
+      // Provide more specific error messages based on the error code
+      if (error.code === 404) {
+        throw new Error('Calendar not found. Please verify the calendar ID and ensure the service account has access.');
+      } else if (error.code === 401 || error.code === 403) {
+        throw new Error('Authentication failed. Please verify the service account credentials and permissions.');
+      } else {
+        throw new Error(`Failed to create calendar event: ${error.message}`);
+      }
     }
   }
 

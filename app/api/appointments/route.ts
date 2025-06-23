@@ -50,7 +50,6 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    console.log(body)
 
     // Validate the appointment data
     const validatedData = appointmentSchema.parse({
@@ -58,11 +57,44 @@ export async function POST(request: NextRequest) {
       date: new Date(body.date),
     })
 
-    console.log(validatedData)
 
     if (process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY) {
       const { createClient } = await import("@supabase/supabase-js")
       const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY)
+
+      // Create Google Calendar event
+      try {
+        const GoogleCalendarService = (await import("@/lib/google-calendar")).default
+        const calendar = new GoogleCalendarService()
+        
+        const durationMinutes = parseInt(validatedData.duration, 10) || 30
+        
+        const startDateTime = new Date(`${validatedData.date.toISOString().split('T')[0]}T${validatedData.time}:00`)
+        const endDateTime = new Date(startDateTime.getTime() + durationMinutes * 60000)
+        
+        const calendarEvent = await calendar.createEvent({
+          title: `${validatedData.title} - ${validatedData.patient}`,
+          description: `Patient: ${validatedData.patient}\n` +
+                      `Type: ${validatedData.type}\n` +
+                      `Scheduled For: ${validatedData.patient} (${process.env.ADMIN_EMAIL || 'Contact Admin'})\n` +
+                      `Notes: ${validatedData.notes || 'None'}`,
+          startDateTime: startDateTime.toISOString(),
+          endDateTime: endDateTime.toISOString(),
+          timeZone: 'America/New_York'
+        })
+
+        console.log('Calendar event created:', calendarEvent)
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+        const errorStack = error instanceof Error ? error.stack : undefined;
+        
+        console.error('Error in calendar event creation process:', {
+          error,
+          message: errorMessage,
+          stack: errorStack
+        })
+        throw new Error(`Calendar event creation failed: ${errorMessage}`)
+      }
 
       const { data, error } = await supabase
         .from("appointments")
@@ -79,7 +111,6 @@ export async function POST(request: NextRequest) {
         })
         .select()
 
-      console.log(data)
 
       if (error) {
         throw error

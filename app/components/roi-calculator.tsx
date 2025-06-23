@@ -78,7 +78,7 @@ export default function ROICalculator() {
         </div>
         <div>
           <CardTitle className="text-3xl font-bold text-gray-900">Interactive ROI Calculator</CardTitle>
-          <p className="text-gray-600">Calculate your potential savings with NOW AI automation</p>
+          <p className="text-gray-600">Calculate your potential savings with <span className="logo text-orange-500">N:OW</span> AI automation</p>
         </div>
       </CardHeader>
       <CardContent className="space-y-6">

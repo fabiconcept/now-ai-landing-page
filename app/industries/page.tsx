@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
-  Bot,
   Stethoscope,
   Heart,
   Building2,
@@ -18,6 +17,9 @@ import {
   Microscope,
   Brain,
 } from "lucide-react"
+import { industriesMetadata } from "@/constants/metadata"
+
+export const metadata = industriesMetadata
 
 export default function IndustriesPage() {
   const industries = [
@@ -195,24 +197,24 @@ export default function IndustriesPage() {
               <span className="text-6xl drop-shadow-lg font-black text-orange-500 tracking-tight logo">N:OW</span>
             </Link>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              <Link href="/" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
                 Home
-              </a>
-              <a href="/solutions" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              </Link>
+              <Link href="/solutions" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
                 Solutions
-              </a>
-              <a href="/industries" className="text-blue-600 font-bold">
+              </Link>
+              <Link href="/industries" className="text-blue-600 font-bold">
                 Industries
-              </a>
-              <a href="/about" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              </Link>
+              <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
                 About
-              </a>
-              <a href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              </Link>
+              <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
                 Blog
-              </a>
-              <a href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              </Link>
+              <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
                 Contact
-              </a>
+              </Link>
             </nav>
             <div className="flex items-center space-x-3">
               <Button

@@ -82,48 +82,55 @@ export default function BlogPostPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <span className="text-6xl drop-shadow-lg font-black text-orange-500 tracking-tight logo">N:OW</span>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Home
-              </a>
-              <a href="/solutions" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Solutions
-              </a>
-              <a href="/industries" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Industries
-              </a>
-              <a href="/about" className="text-gray-600 hover:text-gray-900 transition-colors">
-                About
-              </a>
-              <Link href="/blog" className="text-blue-600 font-medium">
-                Blog
-              </Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" className="hidden sm:inline-flex">
-                Book a Call
-              </Button>
-              <Button className="bg-blue-600 hover:bg-blue-700">Get a Demo</Button>
+      <AnimatedSection className="top-0 sticky z-50">
+        <header className="bg-green-50/50 border-b border-green-100 z-50 backdrop-blur-sm">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-4">
+              <div className="flex items-center space-x-3">
+                <span className="text-6xl drop-shadow-lg font-black text-orange-500 tracking-tight logo">N:OW</span>
+              </div>
+              <nav className="hidden md:flex items-center space-x-8">
+                <Link href="/solutions" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+                  Solutions
+                </Link>
+                <Link href="/pricing" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+                  Pricing
+                </Link>
+                <Link href="/resources" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+                  Resources
+                </Link>
+                <Link href="/newsletter" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+                  Newsletter
+                </Link>
+                <Link href="/contact" className="text-gray-600 hover:text-green-600 transition-colors font-medium">
+                  Contact Us
+                </Link>
+              </nav>
+              <div className="flex items-center space-x-3">
+                <Button
+                  variant="outline"
+                  className="hidden sm:inline-flex border-green-200 text-gray-700 hover:bg-green-50 hover:text-green-700 font-semibold"
+                >
+                  <Link href="/book-call">Book a Call</Link>
+                </Button>
+                <Button className="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-full px-6">
+                  <Link href="/demo">Get a Demo</Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </AnimatedSection>
 
       {/* Breadcrumb */}
       <section className="py-6 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">
+            <Link href="/" className="hover:text-green-600">
               Home
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/blog" className="hover:text-blue-600">
+            <Link href="/blog" className="hover:text-green-600">
               Blog
             </Link>
             <ChevronRight className="w-4 h-4" />
@@ -136,14 +143,14 @@ export default function BlogPostPage() {
       <section className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-8">
+            <Link href="/blog" className="inline-flex items-center text-green-600 hover:text-green-700 mb-8">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
             </Link>
 
             <div className="space-y-6">
               <div className="space-y-4">
-                <Badge variant="secondary" className="bg-blue-50 text-blue-700 border-blue-200">
+                <Badge variant="secondary" className="bg-green-50 text-green-700 border-green-200">
                   {post.category}
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">{post.title}</h1>
@@ -196,7 +203,7 @@ export default function BlogPostPage() {
             <div className="lg:col-span-3">
               <div className="max-w-3xl">
                 {/* Featured Image */}
-                <div className="relative h-64 md:h-96 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-12 overflow-hidden">
+                <div className="relative h-64 md:h-96 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-12 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Bot className="w-24 h-24 text-white opacity-50" />
                   </div>
@@ -238,8 +245,8 @@ export default function BlogPostPage() {
                     need complex care and emotional support.
                   </p>
 
-                  <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
-                    <blockquote className="text-blue-900 italic text-lg">
+                  <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
+                    <blockquote className="text-green-900 italic text-lg">
                       "AI doesn't replace the human touch in healthcare—it amplifies it by removing barriers that
                       prevent meaningful patient-provider connections."
                     </blockquote>
@@ -300,7 +307,7 @@ export default function BlogPostPage() {
                 {/* Author Bio */}
                 <div className="mt-12 p-6 bg-gray-50 rounded-2xl">
                   <div className="flex items-start space-x-4">
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
                       <User className="w-8 h-8 text-blue-600" />
                     </div>
                     <div className="space-y-2">
@@ -354,15 +361,15 @@ export default function BlogPostPage() {
               </Card>
 
               {/* Newsletter CTA */}
-              <Card className="shadow-lg bg-blue-50 border-blue-200">
+              <Card className="shadow-lg bg-green-50 border-green-200">
                 <CardContent className="p-6 space-y-4">
                   <div className="text-center space-y-2">
-                    <h3 className="text-lg font-semibold text-blue-900">Get More Insights</h3>
-                    <p className="text-blue-700 text-sm">
+                    <h3 className="text-lg font-semibold text-green-900">Get More Insights</h3>
+                    <p className="text-green-700 text-sm">
                       Subscribe to our newsletter for the latest AI healthcare insights.
                     </p>
                   </div>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">Subscribe Now</Button>
+                  <Button className="w-full bg-green-600 hover:bg-green-700">Subscribe Now</Button>
                 </CardContent>
               </Card>
             </div>
@@ -431,7 +438,7 @@ export default function BlogPostPage() {
               </div>
             </div>
             <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
-              <p className="text-gray-400">© 2024 NOW AI. All rights reserved.</p>
+              <p className="text-gray-400">© {new Date().getFullYear()} <span className="logo text-orange-500">N:OW</span> AI. All rights reserved.</p>
               {/* <div className="flex space-x-6 mt-4 md:mt-0">
                 <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                   Privacy Policy
