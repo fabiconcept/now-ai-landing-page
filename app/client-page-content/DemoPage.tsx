@@ -122,7 +122,7 @@ export default function DemoPage() {
                                 <div className="space-y-4">
                                     <h1 className="text-4xl font-bold text-gray-900">Demo Scheduled Successfully!</h1>
                                     <p className="text-xl text-gray-600">
-                                        Thank you for your interest in <span className="logo text-orange-500">N:OW</span> AI. We've received your demo request and will be in touch within
+                                        Thank you for your interest in <span className="logo text-orange-500 text-xl">N:OW</span> AI. We've received your demo request and will be in touch within
                                         24 hours to confirm your personalized demonstration.
                                     </p>
                                 </div>

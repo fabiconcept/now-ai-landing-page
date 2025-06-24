@@ -332,7 +332,7 @@ export default function NewsletterPage() {
                                         </Button>
 
                                         <p className="text-xs text-gray-500 text-center">
-                                            By subscribing, you agree to receive marketing emails from <span className="logo text-orange-500">N:OW</span> AI. You can unsubscribe at any
+                                            By subscribing, you agree to receive marketing emails from <span className="logo text-orange-500 text-xl">N:OW</span> AI. You can unsubscribe at any
                                             time.
                                         </p>
                                     </form>
@@ -501,7 +501,7 @@ export default function NewsletterPage() {
                             </div>
                         </div>
                         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
-                            <p className="text-gray-400">© {new Date().getFullYear()} <span className="logo text-orange-500">N:OW</span> AI. All rights reserved.</p>
+                            <p className="text-gray-400">© {new Date().getFullYear()} <span className="logo text-orange-500 text-xl">N:OW</span> AI. All rights reserved.</p>
                             {/* <div className="flex space-x-6 mt-4 md:mt-0">
                 < href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                   Privacy Policy
