@@ -315,7 +315,12 @@ export default function InteractiveCalendar() {
                       : hasAppointments
                         ? "bg-green-100 text-green-800 hover:bg-green-200"
                         : "hover:bg-gray-50 text-gray-700"
-                } cursor-pointer`}
+                } cursor-pointer ${
+                  // if the date is today or before today, disable it
+                  today || date < new Date()
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
                 disabled={loading}
               >
                 {date.getDate()}
