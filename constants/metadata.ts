@@ -75,13 +75,13 @@ export const homeMetadata: Metadata = {
       "Transform your healthcare practice with AI-powered automation solutions. Reduce administrative burden by 70% and improve patient care.",
     images: [
       {
-        url: "/images/og/og-home.jpg",
+        url: "/main-hero-image.png",
         width: 1200,
         height: 630,
         alt: "N:OW AI Healthcare Automation Platform Dashboard",
       },
       {
-        url: "/images/og/og-home-square.jpg",
+        url: "/main-hero-image.png",
         width: 1200,
         height: 1200,
         alt: "N:OW AI Healthcare Automation Platform",
@@ -96,7 +96,7 @@ export const homeMetadata: Metadata = {
     description: "Transform your healthcare practice with AI-powered automation solutions. Reduce admin burden by 70%.",
     images: [
       {
-        url: "/images/twitter/twitter-home.jpg",
+        url: "/main-hero-image.png",
         alt: "N:OW AI Healthcare Automation Platform",
       },
     ],
@@ -147,7 +147,7 @@ export const aboutMetadata: Metadata = {
     description: "Learn about our mission to revolutionize healthcare through AI automation and meet our expert team of 50+ healthcare professionals.",
     images: [
       {
-        url: "/images/og/og-about.jpg",
+        url: "/main-hero-image.png",
         width: 1200,
         height: 630,
         alt: "N:OW AI Team of Healthcare AI Experts",
@@ -162,7 +162,7 @@ export const aboutMetadata: Metadata = {
     description: "Learn about our mission to revolutionize healthcare through AI automation.",
     images: [
       {
-        url: "/images/twitter/twitter-about.jpg",
+        url: "/main-hero-image.png",
         alt: "N:OW AI Healthcare AI Team",
       },
     ],
@@ -201,7 +201,7 @@ export const pricingMetadata: Metadata = {
     description: "Flexible pricing plans starting at $499/month. 14-day free trial with ROI calculator. Most practices save $50,000+ annually.",
     images: [
       {
-        url: "/images/og/og-pricing.jpg",
+        url: "/main-hero-image.png",
         width: 1200,
         height: 630,
         alt: "N:OW AI Pricing Plans Comparison",
@@ -216,7 +216,7 @@ export const pricingMetadata: Metadata = {
     description: "Flexible pricing plans with 14-day free trial. Calculate your ROI today.",
     images: [
       {
-        url: "/images/twitter/twitter-pricing.jpg",
+        url: "/main-hero-image.png",
         alt: "N:OW AI Affordable Pricing Plans",
       },
     ],
@@ -256,7 +256,7 @@ export const demoMetadata: Metadata = {
       "Experience our healthcare automation platform with an interactive demo. See 70% admin reduction in real-time.",
     images: [
       {
-        url: "/images/og/og-demo.jpg",
+        url: "/main-hero-image.png",
         width: 1200,
         height: 630,
         alt: "N:OW AI Platform Interactive Demo Screenshot",
@@ -271,7 +271,7 @@ export const demoMetadata: Metadata = {
     description: "Experience our healthcare automation platform with an interactive demo.",
     images: [
       {
-        url: "/images/twitter/twitter-demo.jpg",
+        url: "/main-hero-image.png",
         alt: "N:OW AI Platform Demo",
       },
     ],
@@ -630,7 +630,7 @@ export const generatePageMetadata = (
     description,
     images: [
       {
-        url: `/images/og/og-${page}.jpg`,
+        url: `/main-hero-image.png`,
         width: 1200,
         height: 630,
         alt: `${title} - N:OW AI`,
