@@ -10,14 +10,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Calendar } from "@/components/ui/calendar"
+import Calendar from "@/components/ui/calendar"
 import { CalendarIcon, CheckCircle, Clock, Video, ArrowRight, Shield, Users } from "lucide-react"
 import { AnimatedSection } from "@/components/ui/animated-section"
 import Link from "next/link"
 
 export default function BookCallPage() {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
-  const [selectedTime, setSelectedTime] = useState("")
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -29,9 +27,23 @@ export default function BookCallPage() {
     urgency: "",
     topics: "",
     additionalNotes: "",
+    selectedDate: new Date(),
+    selectedTime: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const setSelectedDate = (date: Date | undefined) => {
+    if (!date) return
+    setFormData((prev) => ({ ...prev, selectedDate: date }))
+  }
+
+  const setSelectedTime = (time: string) => {
+    setFormData((prev) => ({ ...prev, selectedTime: time }))
+  }
+
+  const selectedDate = formData.selectedDate
+  const selectedTime = formData.selectedTime
 
   const timeSlots = [
     "9:00 AM",
@@ -205,6 +217,9 @@ export default function BookCallPage() {
         </div>
       </section>
 
+      {/* Demo Calender */}
+      {/* <CalendarDemo /> */}
+
       {/* Booking Form */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -277,6 +292,11 @@ export default function BookCallPage() {
                         <span className="text-green-800">Implementation roadmap</span>
                       </div>
                     </div>
+                  </div>
+
+                  {/* Json Form Data */}
+                  <div>
+                    <pre>{JSON.stringify(formData, null, 2)}</pre>                    
                   </div>
                 </CardContent>
               </Card>
