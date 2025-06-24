@@ -748,7 +748,7 @@ export default function HomePage() {
                                     <Button
                                         size="lg"
                                         variant="outline"
-                                        className="text-lg px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-green-600 font-semibold rounded-full hover:scale-105 transition-all"
+                                        className="text-lg px-8 py-3 border-2 border-white bg-transparent text-white hover:bg-white hover:text-green-600 font-semibold rounded-full hover:scale-105 transition-all"
                                         onClick={() => (window.location.href = "/demo")}
                                     >
                                         Schedule a Demo
