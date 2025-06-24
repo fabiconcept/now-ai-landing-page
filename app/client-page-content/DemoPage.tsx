@@ -13,7 +13,6 @@ import { AnimatedSection } from "@/components/ui/animated-section"
 import { AnimatedCard } from "@/components/ui/animated-card"
 import { AnimatedText } from "@/components/ui/animated-text"
 import {
-    Bot,
     Calendar,
     CheckCircle,
     Clock,

@@ -140,7 +140,7 @@ export default function ContactPage() {
     return (
       <div className="min-h-screen bg-white">
         {/* Header */}
-        <header className="bg-white sticky top-0 z-50 border-b border-gray-200">
+        <header className="bg-white/10 sticky top-0 z-50 border-b border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center py-4">
               <div className="flex items-center space-x-3">
@@ -228,7 +228,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white sticky top-0 z-50 border-b border-gray-200">
+      <header className="bg-green-50/50 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
