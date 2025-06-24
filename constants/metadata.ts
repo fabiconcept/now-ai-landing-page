@@ -61,6 +61,10 @@ export const homeMetadata: Metadata = {
     "patient scheduling AI",
     "clinical documentation AI"
   ],
+  icons: {
+    icon: "/favicons/favicon.ico",
+    apple: "/favicons/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
