@@ -1,4 +1,29 @@
-"use client";
+import { Metadata } from "next";
+
+// Metadata for the maintenance page
+export const metadata: Metadata = {
+  title: "Maintenance in Progress | NOW AI",
+  description: "We're currently performing scheduled maintenance. We'll be back online shortly. Thank you for your patience.",
+  robots: "noindex, nofollow",
+  openGraph: {
+    title: "Maintenance in Progress | NOW AI",
+    description: "We're currently performing scheduled maintenance. We'll be back online shortly.",
+    images: [
+      {
+        url: "/images/maintenance-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NOW AI Maintenance"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maintenance in Progress | NOW AI",
+    description: "We're currently performing scheduled maintenance. We'll be back online shortly.",
+    images: ["/images/maintenance-og.jpg"],
+  },
+};
 
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
